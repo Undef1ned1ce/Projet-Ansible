@@ -1,0 +1,17 @@
+---
+- hosts: webserver
+  remote_user: root
+  tasks:
+   - name: debug
+     debug:
+       msg: "Bonjour ici l'environnement"
+
+
+- hosts: dbserver
+  remote_user: root
+  tasks:
+   - name: ensure is installer
+     apt:
+       name: vim
+       state: present
+
