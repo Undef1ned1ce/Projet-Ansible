@@ -1,0 +1,17 @@
+---
+- name: Creation Utilisateur
+  hosts: webserver
+  remote_user: root
+  vars_files:
+    - "vars/{{env}}_secret.yml"
+    - "vars/{{env}}_secret.yml"
+
+  tasks:
+    - name: Ajouter un Utilisateur
+      user:
+        name: "{{us}}"
+        password: "{{ password | password_hash('sha512') }}"
+        uid: 1001
+#- name: Creation Utilisateur
+#  hosts: webserver
+
