@@ -1,0 +1,16 @@
+---
+- name: Installer Apache
+  apt:
+    name: apache2
+    state: present
+
+- name: lancer apache2
+  service:
+    name: apache2
+    state: started
+  register: verif
+
+- name: Lancer la verif   
+  debug: 
+    msg: "{{verif.status}}"
+#possibilité de selectionner la valeur status

@@ -1,0 +1,7 @@
+---
+- name: Ajouter un Utilisateur
+  user:
+      name: "{{us}}"
+      password: "{{ password | password_hash('sha512') }}"
+      uid: 1001
+

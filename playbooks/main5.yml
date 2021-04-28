@@ -3,12 +3,17 @@
   hosts: webserver
   remote_user: root
   vars_files:
-    - "vars/{{env}}_secret.yml"
-    - "vars/{{env}}_secret.yml"
+          - "vars/{{env}}_secret.yml"
 
   tasks:
     - name: Ajouter un Utilisateur
       user:
         name: "{{us}}"
         password: "{{ password | password_hash('sha512') }}"
-        uid: 1001
+      loop:
+        - us: "{{us}}"
+          password: "{{password}}"
+        - us: "{{us1}}"
+          password: "{{password1}}"
+      when: ansible_distribution == "Ubuntu"
+
