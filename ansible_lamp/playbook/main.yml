@@ -1,0 +1,9 @@
+---
+- name: Playbook name
+  hosts: host__web
+  remote_user: root
+  tasks:
+   - name: Installer Vim (voila l'ajout en plus pour faire plaisir)
+     apt:
+        name: vim
+        state: present
