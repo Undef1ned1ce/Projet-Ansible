@@ -1,0 +1,18 @@
+---
+- name: Installer Mysql
+  apt:
+    name: mysql-server
+    state: present
+  when: ansible_facts['os_family'] == 'ubuntu18.04'
+
+- name: lancer Mysql
+  service:
+    name: mysql
+    state: started
+  register: mysqld
+
+- name: Lancer la vérifiaction de Mysql
+  debug:
+    msg: "{{mysqld.status}}"
+...
+

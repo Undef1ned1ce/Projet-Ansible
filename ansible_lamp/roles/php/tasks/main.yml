@@ -1,0 +1,18 @@
+---
+- name: Installer PHP
+  apt:
+    name: php
+    state: present
+  when: ansible_facts['os_family'] == 'ubuntu18.04'
+
+- name: lancer PHP
+  service:
+    name: PHP
+    state: started
+  register: PHPS
+
+- name: Lancer la vérifiaction d'apache
+  debug:
+    msg: "{{PHPS.status}}"
+...
+
