@@ -1,6 +1,6 @@
 ---
 - name: Playbook name
-  hosts: host__web
+  hosts: host_web
   remote_user: root
   tasks:
    - name: Installer Vim (voila l'ajout en plus pour faire plaisir)
